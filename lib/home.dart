@@ -14,6 +14,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import 'currencypage.dart';
 import 'main.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,6 +41,7 @@ class HomeScreenState extends State<HomeScreen> {
   List<Choice> choices = const <Choice>[
     const Choice(title: 'Settings', icon: Icons.settings),
     const Choice(title: 'Log out', icon: Icons.exit_to_app),
+    const Choice(title: 'Currencies', icon: Icons.monetization_on_outlined)
   ];
 
   @override
@@ -89,8 +91,11 @@ class HomeScreenState extends State<HomeScreen> {
   void onItemMenuPress(Choice choice) {
     if (choice.title == 'Log out') {
       handleSignOut();
-    } else {
+    } else if(choice.title == 'Settings') {
       Navigator.push(context, MaterialPageRoute(builder: (context) => ChatSettings()));
+    }
+    else{
+      Navigator.push(context, MaterialPageRoute(builder: (context) => CurrencyPage()));
     }
   }
 
